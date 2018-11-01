@@ -16,11 +16,11 @@ import java.util.Random;
 @RestController
 public class ConsumerController {
 
-    private final RestTemplate restTemplate;
+    private final ConsumerClient consumerClient;
     private final String urlProducer;
 
-    public ConsumerController(RestTemplate restTemplate, @Value("${producer.url}") String producerUrl) {
-        this.restTemplate = restTemplate;
+    public ConsumerController(ConsumerClient consumerClient, @Value("${producer.url}") String producerUrl) {
+        this.consumerClient = consumerClient;
         urlProducer = producerUrl;
     }
 
@@ -36,24 +36,17 @@ public class ConsumerController {
             throw new BadRequestException();
         }
 
-        ResponseEntity<Produced> producedResponse = restTemplate.postForEntity(urlProducer, validTime, Produced.class);
-
-        if (producedResponse.getStatusCode() != HttpStatus.OK) {
-            throw new NotFoundException();
-        }
+            Produced produced = consumerClient.consumerProducer(urlProducer, validTime);
 
         return ResponseEntity.ok(
           new Consumed(
-                  producedResponse.getBody().getText(),
-                  producedResponse.getBody().getDate(),
-                  producedResponse.getBody().getCount(),
+                  produced.getText(),
+                  produced.getDate(),
+                  produced.getCount(),
                   new Random().nextBoolean()
           )
         );
     }
-
-    @ResponseStatus(value = HttpStatus.NOT_FOUND, reason="Produced not found")
-    public class NotFoundException extends RuntimeException {}
 
     @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason="Bad request")
     public class BadRequestException extends RuntimeException {}
