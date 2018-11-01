@@ -1,4 +1,4 @@
-package com.malsolo.pact.test.springbootsimplepactconsumer;
+package com.malsolo.pact.test.boot.consumer;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
