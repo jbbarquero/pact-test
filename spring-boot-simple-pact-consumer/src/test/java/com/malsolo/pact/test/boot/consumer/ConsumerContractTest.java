@@ -56,7 +56,7 @@ public class ConsumerContractTest {
                         }
                 )
                 .body("{\"text\":\"Text\",\"date\":\"2018-11-01T12:49:55.993\", \"count\":1000}")
-                .toPact();    }
+            .toPact();    }
 
     @Test
     @PactVerification("boot_simple_pact_producer")
