@@ -4,7 +4,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.malsolo.pact</groupId>
+	<groupId>com.malsolo.pact.test</groupId>
 	<artifactId>pact-test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
