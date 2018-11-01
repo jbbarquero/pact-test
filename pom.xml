@@ -16,6 +16,7 @@
 		<module>creditcard-service</module>
 		<module>creditcard-scorer</module>
 		<module>pact-jvm-example</module>
+		<module>spring-boot-simple-pact-consumer</module>
 	</modules>
 
 </project>
