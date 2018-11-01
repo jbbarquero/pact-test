@@ -1,0 +1,17 @@
+Docs:
+
+· https://docs.pact.io/
+· https://github.com/pact-foundation/README
+
+Videos:
+· https://app.pluralsight.com/library/courses/spring-cloud-contract-introduction/table-of-contents
+· https://www.youtube.com/watch?v=F-IUh0M-pu8&t=1411s
+
+Training:
+· JVM https://github.com/DiUS/pact-jvm
+- Consumer
+	https://github.com/DiUS/pact-jvm/tree/master/pact-jvm-consumer-junit
+- Consumer with Java 8 (I rather JUnit rules)
+	https://github.com/DiUS/pact-jvm/tree/master/pact-jvm-consumer-java8
+- 
+
