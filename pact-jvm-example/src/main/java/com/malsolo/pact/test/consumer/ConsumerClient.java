@@ -1,4 +1,4 @@
-package com.malsolo.pact.creditcard.creditcardservice;
+package com.malsolo.pact.test.consumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.net.UrlEscapers;

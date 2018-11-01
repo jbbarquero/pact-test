@@ -15,6 +15,7 @@
 	<modules>
 		<module>creditcard-service</module>
 		<module>creditcard-scorer</module>
+		<module>pact-jvm-example</module>
 	</modules>
 
 </project>

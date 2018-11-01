@@ -1,10 +1,8 @@
-package com.malsolo.pact.creditcard.creditcardservice;
+package com.malsolo.pact.test.consumer;
 
 import au.com.dius.pact.consumer.ConsumerPactTestMk2;
 import au.com.dius.pact.consumer.MockServer;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
-import au.com.dius.pact.consumer.ConsumerPactTest;
-import au.com.dius.pact.model.PactFragment;
 import au.com.dius.pact.model.RequestResponsePact;
 import org.junit.Assert;
 
