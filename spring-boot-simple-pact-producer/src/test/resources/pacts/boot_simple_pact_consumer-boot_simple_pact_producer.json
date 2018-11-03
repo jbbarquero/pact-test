@@ -1,0 +1,41 @@
+{
+    "provider": {
+        "name": "boot_simple_pact_producer"
+    },
+    "consumer": {
+        "name": "boot_simple_pact_consumer"
+    },
+    "interactions": [
+        {
+            "description": "A POST request to the producer",
+            "request": {
+                "method": "POST",
+                "path": "/producer"
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "body": {
+                    "text": "Text",
+                    "date": "2018-11-01T12:49:55.993",
+                    "count": 1000
+                }
+            },
+            "providerStates": [
+                {
+                    "name": "There is a producer that expects requests"
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "pactSpecification": {
+            "version": "3.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.5.23"
+        }
+    }
+}
