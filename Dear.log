@@ -13,5 +13,27 @@ Training:
 	https://github.com/DiUS/pact-jvm/tree/master/pact-jvm-consumer-junit
 - Consumer with Java 8 (I rather JUnit rules)
 	https://github.com/DiUS/pact-jvm/tree/master/pact-jvm-consumer-java8
-- 
+-
+
+
+Docker
+· From https://docs.pact.io/getting_started/further_reading to https://github.com/DiUS/pact-jvm
+    Then https://github.com/DiUS/pact-jvm#how-do-i-transport-my-pacts-from-consumers-to-providers to https://github.com/pact-foundation/pact_broker
+        Then (Ctrl+F Docker Pact Broker) to https://hub.docker.com/r/dius/pact-broker/
+            Then "Running with Docker Compose" ==> https://github.com/DiUS/pact_broker-docker/blob/master/docker-compose.yml
+
+Oops!
+
+$ docker-compose up
+The program 'docker-compose' is currently not installed. You can install it by typing:
+sudo apt install docker-compose
+
+
+From https://github.com/docker/compose/releases ==> last version is 1.23.1, so:
+
+https://docs.docker.com/compose/install/#install-compose
+
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+$ docker-compose --version
 
