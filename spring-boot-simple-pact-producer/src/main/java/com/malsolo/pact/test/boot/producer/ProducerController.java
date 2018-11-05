@@ -4,11 +4,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.nio.charset.Charset;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.Random;
 
 @RestController
 public class ProducerController {
@@ -20,15 +18,13 @@ public class ProducerController {
     public ResponseEntity<Produced> producerJSON(/*@RequestBody(required = false) LocalDateTime dateTime*/) {
         LocalDateTime dateTime = null;
         if (dateTime == null) {
-            dateTime = LocalDateTime.now();
+            dateTime = LocalDateTime.parse("2018-11-01T12:49:55.993");
         }
-        byte[] bytes = new byte[10];
-        new Random().nextBytes(bytes);
-        return ResponseEntity.ok(new Produced(
-                String.format("Tet: %s", new String(bytes, Charset.defaultCharset())),
-                Date.from(dateTime.atZone(ZoneId.systemDefault()).toInstant()),
-                new Random().nextInt()
-                )
+        Produced produced = new Produced(
+                "Text",
+                Date.from(dateTime.atZone(ZoneId.of("UTC")).toInstant()),
+                1000
         );
+        return ResponseEntity.ok(produced);
     }
 }

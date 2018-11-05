@@ -8,7 +8,6 @@ import au.com.dius.pact.provider.junit.target.HttpTarget;
 import au.com.dius.pact.provider.junit.target.Target;
 import au.com.dius.pact.provider.junit.target.TestTarget;
 import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
-import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.web.client.RestTemplate;
