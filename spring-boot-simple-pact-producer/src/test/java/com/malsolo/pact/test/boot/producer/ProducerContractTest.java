@@ -11,8 +11,10 @@ import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.boot.SpringApplication;
+import org.springframework.util.SocketUtils;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +34,8 @@ public class ProducerContractTest {
     @Rule
     public WireMockClassRule instanceRule = wireMockRule;
 
+    private static int randomPort;
+
     @BeforeClass //Method will be run once: before whole contract test suite
     public static void setUpService() {
         System.out.println("Run DB, create schema. Run service...");
@@ -39,8 +43,10 @@ public class ProducerContractTest {
 
     @BeforeClass
     public static void RunSpringApplication() {
-        // Start boot app
+        randomPort = SocketUtils.findAvailableTcpPort();
+        System.getProperties().put( "server.port", randomPort);
         SpringApplication.run(SpringBootSimplePactProducerApplication.class);
+        System.out.printf("##### APPLICATION RUNNING ON PORT %d\n", randomPort);
     }
 
     @Before //Method will be run before each test of interaction
@@ -80,7 +86,7 @@ public class ProducerContractTest {
     }
 
     @TestTarget // Annotation denotes Target that will be used for tests
-    public final Target target = new HttpTarget(9191); // Out-of-the-box implementation of Target (for more information take a look at Test Target section)
+    public final Target target = new HttpTarget(randomPort); // Out-of-the-box implementation of Target (for more information take a look at Test Target section)
 
     @Test
     public void testMarkerMethod() {
