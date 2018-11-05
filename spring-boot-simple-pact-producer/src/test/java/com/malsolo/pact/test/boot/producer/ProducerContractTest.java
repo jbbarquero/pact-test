@@ -10,6 +10,7 @@ import au.com.dius.pact.provider.junit.target.TestTarget;
 import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
 import org.junit.*;
 import org.junit.runner.RunWith;
+import org.springframework.boot.SpringApplication;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
@@ -34,6 +35,12 @@ public class ProducerContractTest {
     @BeforeClass //Method will be run once: before whole contract test suite
     public static void setUpService() {
         System.out.println("Run DB, create schema. Run service...");
+    }
+
+    @BeforeClass
+    public static void RunSpringApplication() {
+        // Start boot app
+        SpringApplication.run(SpringBootSimplePactProducerApplication.class);
     }
 
     @Before //Method will be run before each test of interaction
