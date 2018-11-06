@@ -47,6 +47,8 @@ public class ProducerContractTest {
         System.getProperties().put( "server.port", randomPort);
         SpringApplication.run(SpringBootSimplePactProducerApplication.class);
         System.out.printf("##### APPLICATION RUNNING ON PORT %d\n", randomPort);
+
+        System.getProperties().put("pact.verifier.publishResults", "true");
     }
 
     @Before //Method will be run before each test of interaction
