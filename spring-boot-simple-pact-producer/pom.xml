@@ -68,6 +68,28 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!--
+			<plugin>
+				<groupId>au.com.dius</groupId>
+				<artifactId>pact-jvm-provider-maven_2.12</artifactId>
+				<version>${pact.version}</version>
+				<configuration>
+					<serviceProviders>
+						<serviceProvider>
+							<name>boot_simple_pact_producer</name>
+							<host>localhost</host>
+							<port>9191</port>
+							<path>/producer</path>
+							<pactBrokerUrl>http://localhost:9000/</pactBrokerUrl>
+						</serviceProvider>
+					</serviceProviders>
+					<!- - <pactDirectory/> the default ${project.build.directory}/pacts is OK - - >
+					<!- - <projectVersion/> the default ${project.version} is OK - - >
+					<pactBrokerUrl>http://localhost:9000</pactBrokerUrl>
+					<trimSnapshot>true</trimSnapshot>
+				</configuration>
+			</plugin>
+			-->
 		</plugins>
 	</build>
 

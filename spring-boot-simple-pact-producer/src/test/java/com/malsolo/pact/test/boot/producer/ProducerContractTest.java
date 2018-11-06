@@ -3,7 +3,7 @@ package com.malsolo.pact.test.boot.producer;
 import au.com.dius.pact.provider.junit.PactRunner;
 import au.com.dius.pact.provider.junit.Provider;
 import au.com.dius.pact.provider.junit.State;
-import au.com.dius.pact.provider.junit.loader.PactFolder;
+import au.com.dius.pact.provider.junit.loader.PactBroker;
 import au.com.dius.pact.provider.junit.target.HttpTarget;
 import au.com.dius.pact.provider.junit.target.Target;
 import au.com.dius.pact.provider.junit.target.TestTarget;
@@ -14,7 +14,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.util.SocketUtils;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +22,8 @@ import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options
 
 @RunWith(PactRunner.class) // Say JUnit to run tests with custom Runner
 @Provider("boot_simple_pact_producer") // Set up name of tested provider
-@PactFolder("pacts") // Point where to find pacts (See also section Pacts source in documentation)
+//@PactFolder("pacts") // Point where to find pacts (See also section Pacts source in documentation)
+@PactBroker(host = "localhost", port = "9000", protocol = "http")
 public class ProducerContractTest {
 
     // NOTE: this is just an example of embedded service that listens to requests, you should start here real service
