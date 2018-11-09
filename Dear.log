@@ -14,11 +14,23 @@ Training:
 - Consumer with Java 8 (I rather JUnit rules)
 	https://github.com/DiUS/pact-jvm/tree/master/pact-jvm-consumer-java8
 
+> PACT BROKER
+· Run docker image:
+    $ cd docker/pact-broker
+    $ docker-compose up
+
 > CONSUMER:
 · Create the pact executing the test ConsumerContractTest
 · Publish the pact with maven:
     $ cd spring-boot-simple-pact-consumer
     $ mvn pact:publish
+
+> PRODUCER (PROVIDER)
+· Ensure following the pact by executing the test ProducerContractTest
+· Verify the pact in broker with maven
+    $ cd spring-boot-simple-pact-producer
+    $ mvn pact:verify -Dpact.verifier.publishResults=true
+
 
 Docker
 · From https://docs.pact.io/getting_started/further_reading to https://github.com/DiUS/pact-jvm

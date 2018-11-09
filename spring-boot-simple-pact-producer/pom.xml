@@ -69,6 +69,11 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<!--
+			See
+			· https://github.com/DiUS/pact-jvm/tree/master/pact-jvm-provider-maven#maven-plugin-to-verify-a-provider
+			· https://github.com/DiUS/pact-jvm/tree/master/pact-jvm-provider-maven#3-execute-mvn-pactverify
+			And find pact.verifier.publishResults at
+			· https://github.com/DiUS/pact-jvm/tree/master/pact-jvm-provider-maven#publishing-verification-results-to-a-pact-broker-version-354
 			Use with:
 			$ mvn pact:verify -Dpact.verifier.publishResults=true
 			-->
