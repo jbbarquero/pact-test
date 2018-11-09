@@ -5,14 +5,15 @@ import au.com.dius.pact.consumer.PactProviderRuleMk2;
 import au.com.dius.pact.consumer.PactVerification;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
 import au.com.dius.pact.model.RequestResponsePact;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.SocketUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
@@ -31,13 +32,18 @@ public class ConsumerContractTest {
 
     @Autowired
     private ConsumerClient consumerClient;// = new ConsumerClient(new RestTemplate());
-    @Value("${producer.url}")
-    private String producerUrl;// = "http://localhost:9191/producer";
     @Autowired
     private RestTemplate restTemplate;
 
+    private static int producerRandomPort;
+
+    @BeforeClass
+    public static void assignProducerRandomPort() {
+        producerRandomPort = SocketUtils.findAvailableTcpPort();
+    }
+
     @Rule
-    public PactProviderRuleMk2 mockProvider = new PactProviderRuleMk2("boot_simple_pact_producer", "localhost", 9191, this);
+    public PactProviderRuleMk2 mockProvider = new PactProviderRuleMk2("boot_simple_pact_producer", "localhost", producerRandomPort, this);
 
     @Pact(consumer="boot_simple_pact_consumer")
     public RequestResponsePact createPact(PactDslWithProvider builder) {
@@ -69,6 +75,9 @@ public class ConsumerContractTest {
         String string = restTemplate.getForObject(consumerUrl, String.class);
         assertThat(string).isNotNull();
         assertThat(string).isEqualTo("{}");
+
+        String producerUrl = String.format("http://localhost:%d/producer", producerRandomPort);
+        System.out.printf("***** CONTRACT TESTING WITH PRODUCER: %s\n", producerUrl);
 
         //Actual contract test
         Produced produced = consumerClient.consumerProducer(producerUrl,

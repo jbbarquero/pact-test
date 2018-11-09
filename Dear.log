@@ -13,8 +13,12 @@ Training:
 	https://github.com/DiUS/pact-jvm/tree/master/pact-jvm-consumer-junit
 - Consumer with Java 8 (I rather JUnit rules)
 	https://github.com/DiUS/pact-jvm/tree/master/pact-jvm-consumer-java8
--
 
+> CONSUMER:
+· Create the pact executing the test ConsumerContractTest
+· Publish the pact with maven:
+    $ cd spring-boot-simple-pact-consumer
+    $ mvn pact:publish
 
 Docker
 · From https://docs.pact.io/getting_started/further_reading to https://github.com/DiUS/pact-jvm
